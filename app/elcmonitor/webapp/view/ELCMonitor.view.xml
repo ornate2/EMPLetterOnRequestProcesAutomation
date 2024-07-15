@@ -1,0 +1,143 @@
+<mvc:View controllerName="com.asianpaints.sf.elcmonitor.controller.ELCMonitor"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m" 
+    xmlns:t="sap.ui.table" 
+    xmlns:core="sap.ui.core">
+    <Page id="page" title="ELC Monitor ({tabCountModel>/annualCompMonitorCount})" titleAlignment="Center" class="sapUiResponsivePadding--header sapUiResponsivePadding--footer">
+        <headerContent>
+            <Button id="_IDRefresh" press="onRefresh" icon="sap-icon://refresh" tooltip="Refresh" />
+        </headerContent>
+        <content>
+            <t:Table id="idELCMonitorTable" rows="{
+            path: '/ELCWorkflow', 
+            parameters: {$select : '*', $count : true},    
+            sorter : {
+                path : 'CommunicationStatus',
+                descending: true 
+            } }"
+            selectionMode="MultiToggle" fixedColumnCount="4" visibleRowCountMode="Auto" threshold="10000" enableBusyIndicator="true" rowsUpdated="annualCompMonitorTableUpdated" paste="onPaste" ariaLabelledBy="title">
+        <t:extension>
+            <OverflowToolbar style="Clear">
+                <ToolbarSpacer />
+                <SearchField placeholder="Filter" search="filterGlobally" width="15rem" />
+                <Button icon="sap-icon://decline" tooltip="Clear all filters" press="clearAllFilters"/>
+                <Button icon="sap-icon://excel-attachment" tooltip="Download table data" press="onExport"/>
+            </OverflowToolbar>
+        </t:extension>
+        <t:columns>
+            <!--t:Column width="9rem" filterProperty='wfRequestId' sortProperty='wfRequestId'>
+                <Label text="WF Request Id" />
+                <t:template>
+                    <Text text="{wfRequestId}" wrapping="false" />
+                </t:template>
+            </t:Column--> 
+            <t:Column width="9rem" filterProperty='empCode' sortProperty='empCode'>
+                <Label text="Emp Code" />
+                <t:template>
+                    <Text text="{empCode}" wrapping="false" />
+                </t:template>
+            </t:Column>
+            <t:Column width="4rem" filterProperty='title' sortProperty='title'>
+                <Label text="Title" />
+                <t:template>
+                    <Text text="{title}" wrapping="false" />
+                </t:template>
+            </t:Column>
+            <t:Column width="11rem" filterProperty='fullName' sortProperty='fullName'>
+                <Label text="Full Name" />
+                <t:template>
+                    <Text text="{fullName}" wrapping="false" />
+                </t:template>
+            </t:Column>
+            <!--t:Column width="11rem" filterProperty='eventReason' sortProperty='eventReason'>
+                <Label text="Event Reason" />
+                <t:template>
+                    <Text text="{path : 'eventReason' }" wrapping="false" />
+                </t:template>
+            </t:Column-->
+            <t:Column width="11rem" filterProperty="eventReasonDescription" sortProperty="eventReasonDescription">
+                <Label text="Event Reason" />
+                <t:template>
+                    <Text text="{path : 'eventReasonDescription' }" wrapping="false" />
+                </t:template>
+            </t:Column>
+            <t:Column width="11rem" filterProperty='CommunicationStatus' sortProperty='CommunicationStatus'>
+                <Label text="Communication Status" />
+                <t:template>
+                    <Text text="{CommunicationStatus}" wrapping="false" />
+                </t:template>
+            </t:Column>
+            <t:Column width="11rem" filterProperty='CommunicationRemarks' sortProperty='CommunicationRemarks'>
+                <Label text="Communication Remarks" wrapping="true"/>
+                <t:template>
+                    <Text text="{CommunicationRemarks}" wrapping="true" />
+                </t:template>
+            </t:Column>
+            <t:Column width="6rem" sortProperty='CommunicationStatus'>
+                <Label text="Hold" />
+                <t:template>
+                    <Button id="idHold" visible="{= %{CommunicationStatus} === 'PENDING' || %{CommunicationStatus} === 'HOLD'}" text="{= %{CommunicationStatus} === 'PENDING' ? 'Hold' : 'Release'}" type="{= %{CommunicationStatus} === 'PENDING' ? 'Reject' : 'Accept'}" press=".onHold" wrapping="false" />
+                </t:template>
+            </t:Column>
+            <t:Column width="6rem" sortProperty='CommunicationStatus'>
+                <Label text="Reject" />
+                <t:template>
+                    <Button id="idReject" visible="{= %{CommunicationStatus} !== 'SENT' &amp;&amp; %{CommunicationStatus} !== 'REJECTED' &amp;&amp; %{CommunicationStatus} !== 'INPROGRESS'}" text="Reject" type="Negative" wrapping="false" press="onReject"/>
+                </t:template>
+            </t:Column>
+            <t:Column width="5rem" filterType="sap.ui.model.type.Boolean" filterProperty='IsEPUploaded' sortProperty='IsEPUploaded'>
+                <Label text="EP Upload" wrapping="true" />
+                <t:template>
+                    <Switch type="AcceptReject" state="{IsEPUploaded}" enabled="false"/>
+                </t:template>
+            </t:Column>
+            <t:Column width="5rem" filterType="sap.ui.model.type.Boolean" filterProperty='IsFileNetUploaded' sortProperty='IsFileNetUploaded'>
+                <Label text="FileNet Upload" wrapping="true" />
+                <t:template>
+                    <Switch type="AcceptReject" state="{IsFileNetUploaded}" enabled="false"/>
+                </t:template>
+            </t:Column>
+            <t:Column width="9rem" filterProperty='effectiveDate' sortProperty='effectiveDate'>
+                <Label text="Effective Date" />
+                <t:template>
+                    <Text text="{effectiveDate}" wrapping="false" />
+                </t:template>
+            </t:Column>
+
+            <!--t:Column width="5rem" filterType="sap.ui.model.type.Integer" filterProperty='LetterTemplate' sortProperty='LetterTemplate'>
+                <Label text="Letter Template" />
+                <t:template>
+                    <Link  text="{path : 'LetterTemplate'}" press="onELCLetterPreview" wrapping="false"/>  
+                </t:template>
+            </t:Column-->
+            <t:Column width="15rem" filterProperty="LetterTemplateDescription" sortProperty="LetterTemplateDescription" >
+                <Label text="Letter Template"   />
+                <t:template>
+                  <Link  text="{path : 'LetterTemplateDescription'}" press="onELCLetterPreview" wrapping="false"/> 
+                </t:template>
+            </t:Column>
+            <t:Column width="11rem" filterProperty='email' sortProperty='email'>
+                <Label text="Employee Email" wrapping="true" />
+                <t:template>
+                    <Text text="{email}" wrapping="false" />
+                </t:template>
+            </t:Column>
+            
+        </t:columns>
+    </t:Table>
+        </content>
+        <footer>
+            <Toolbar id="otbFooter">
+                <ToolbarSpacer />
+                <Button text="Fetch SF Workflows" type="Accept" press="onFetchWorkflows" />
+                <Button text="Send ELC Notification" type="Accept" press="onSendNotif" /> 
+                <Button text="Trigger Letter" type="Accept" press="onTriggerLetter" />
+                <Button text="EP Upload" type="Accept" press="onEPUpload" />
+                <Button text="FileNet Upload" type="Accept" press="onFileNetUpload" />
+                <Button text="Hold All" type="Reject" press="onHoldAll" />
+                <Button text="Release All" type="Accept" press="onReleaseAll" />
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>

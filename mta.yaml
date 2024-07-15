@@ -1,0 +1,203 @@
+_schema-version: "3.1"
+ID: EmpLetterOnRequest
+description: A simple CAP project.
+version: 1.0.4
+modules:
+- name: EmpLetterOnRequest-srv
+  type: nodejs
+  path: gen/srv
+  properties:
+    APLFileNetURL: https://apidev.asianpaints.com/v1/test_filenet_letters_api/uploadFile
+    CP2FileNetURL: https://apidev.asianpaints.com/v1/test_filenet_letters_api_cp2/uploadFile
+    DefaultEmail: hrit@asianpaints.com
+    DefaultEmailDestination: ELCLettersMail
+    ELC_Days: 3
+    SFUpdateDestination: SF_Update
+    MonitorDisplayDays: 30
+  requires:
+  - name: EmpLetterOnRequest-db
+  - name: uaa_EmpLetterOnRequest
+  - name: EmpLetterOnRequest-destination-service
+  - name: EmpLetterOnRequest-logs
+  provides:
+  - name: srv-api
+    properties:
+      srv-url: ${default-url}
+  parameters:
+    buildpack: nodejs_buildpack
+  build-parameters:
+    builder: npm-ci
+- name: EmpLetterOnRequest-db-deployer
+  type: hdb
+  path: gen/db
+  requires:
+  - name: EmpLetterOnRequest-db
+  parameters:
+    buildpack: nodejs_buildpack
+- name: EmpLetterOnRequest-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: srv-api
+  - name: EmpLetterOnRequest-destination-service
+    parameters:
+      content-target: true
+  - name: EmpLetterOnRequest_html_repo_host
+    parameters:
+      service-key:
+        name: EmpLetterOnRequest_html_repo_host-key
+  - name: uaa_EmpLetterOnRequest
+    parameters:
+      service-key:
+        name: uaa_EmpLetterOnRequest-key
+  parameters:
+    content:
+      subaccount:
+        destinations:
+        - Name: EmployeeLetterOnRequest_EmpLetterOnRequest_html_repo_host
+          ServiceInstanceName: EmpLetterOnRequest-html5-app-host-service
+          ServiceKeyName: EmpLetterOnRequest_html_repo_host-key
+          sap.cloud.service: EmployeeLetterOnRequest
+        - Authentication: OAuth2UserTokenExchange
+          Name: EmployeeLetterOnRequest_uaa_EmpLetterOnRequest
+          ServiceInstanceName: uaa_EmpLetterOnRequest
+          ServiceKeyName: uaa_EmpLetterOnRequest-key
+          sap.cloud.service: EmployeeLetterOnRequest
+        - Authentication: OAuth2ClientCredentials
+          Name: EmpLetterOnRequest-srv
+          TokenServiceInstanceName: uaa_EmpLetterOnRequest
+          TokenServiceKeyName: uaa_EmpLetterOnRequest-key
+          URL: ~{srv-api/srv-url}
+        existing_destinations_policy: update
+  build-parameters:
+    no-source: true
+- name: LetterOnRequestWF
+  type: com.sap.application.content
+  path: LetterOnRequestWF
+  requires:
+  - name: sap_processautomation
+    parameters:
+      content-target: true
+      service-key:
+        config:
+          deployUsageScenario: workflow
+        name: spa-workflow-service-key
+- name: EmpLetterOnRequest-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: EmpLetterOnRequest_html_repo_host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - comsapasianpaintsLetterOnRequestTaskUI.zip
+      name: comsapasianpaintsLetterOnRequestTaskUI
+      target-path: resources/
+    - artifacts:
+      - comaplLetterOnRequestWFStartUI.zip
+      name: comaplLetterOnRequestWFStartUI
+      target-path: resources/
+    - artifacts:
+      - comasianpaintssfelcmonitor.zip
+      name: comasianpaintssfelcmonitor
+      target-path: resources/
+    - artifacts:
+      - comasianpaintssfdbmaintenance.zip
+      name: comasianpaintssfdbmaintenance
+      target-path: resources/
+- name: comsapasianpaintsLetterOnRequestTaskUI
+  type: html5
+  path: LetterOnRequestTaskUI
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: comaplLetterOnRequestWFStartUI
+  type: html5
+  path: LetterOnRequestWFStartUI
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: comasianpaintssfelcmonitor
+  type: html5
+  path: app/elcmonitor
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: comasianpaintssfdbmaintenance
+  type: html5
+  path: app/dbmaintenance
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: EmpLetterOnRequest-logs
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: application-logs
+    service-plan: lite
+- name: EmpLetterOnRequest-db
+  type: com.sap.xs.hdi-container
+  parameters:
+    service: hana
+    service-plan: hdi-shared
+- name: EmpLetterOnRequest-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: EmpLetterOnRequest-destination-service
+    service-plan: lite
+- name: EmpLetterOnRequest_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: EmpLetterOnRequest-html5-app-host-service
+    service-plan: app-host
+- name: uaa_EmpLetterOnRequest
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-plan: application
+- name: sap_processautomation
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: process-automation-service
+    service-plan: standard
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+  - builder: custom
+    commands:
+    - npx -p @sap/cds-dk cds build --production

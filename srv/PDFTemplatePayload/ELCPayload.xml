@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form1>
+   <Subform1>
+      <CompanyLogo xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/" xfa:contentType="image/png">{CompanyLogo}</CompanyLogo>
+      <CompanyName>{CompanyName}</CompanyName>
+      <Address1>{Address1}</Address1>
+      <Address2>{Address2}</Address2>
+      <Address3>{Address3}</Address3>
+      <Address4>{Address4}</Address4>
+      <Address5>{Telephone1}</Address5>
+      <Address6>{Telephone2}</Address6>
+      <Address7>{Website}</Address7>
+   </Subform1>
+   <Subform2>
+      <EmployeeCode>Employee code: {EmployeeCode}</EmployeeCode>
+      <Date>Date: {LetterDate}</Date>
+      <TitleFullName>{TitleFullName}</TitleFullName>
+      <CurrentFuncDepart>{NewFunction}</CurrentFuncDepart>
+      <CurrentLocation>{NewLocation}</CurrentLocation>
+      <Dear>Dear {TitleFullName},</Dear>
+      <Paragraphs>
+         <Paragraph1><body xmlns="http://www.w3.org/1999/xhtml">{P1}</body></Paragraph1>
+         <Paragraph2><body xmlns="http://www.w3.org/1999/xhtml">{P2}</body></Paragraph2>
+         <Paragraph3><body xmlns="http://www.w3.org/1999/xhtml">{P3}</body></Paragraph3>
+         <Paragraph4><body xmlns="http://www.w3.org/1999/xhtml">{P4}</body></Paragraph4>
+         <Paragraph5><body xmlns="http://www.w3.org/1999/xhtml">{P5}</body></Paragraph5>
+         <Paragraph6><body xmlns="http://www.w3.org/1999/xhtml">{P6}</body></Paragraph6>
+         <BestWishes>With best wishes,</BestWishes>
+         <CompanyName>For {CompanyName}</CompanyName>
+         <Sign xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/" xfa:contentType="image/png">{Sign}</Sign>
+         <SigningAuthName>{SigningAuthName}</SigningAuthName>
+         <SigningAuthDesignation>{SigningAuthDesignation}</SigningAuthDesignation>
+      </Paragraphs>
+   </Subform2>
+   <Subform3>
+      <Address1>{Address1}</Address1>
+      <Address2>{Address2}</Address2>
+      <Address3>{Address3}</Address3>
+      <Address4>{Address4}</Address4>
+      <Address5>{Telephone1}</Address5>
+   </Subform3>
+</form1>

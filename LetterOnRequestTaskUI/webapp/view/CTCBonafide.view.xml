@@ -1,0 +1,17 @@
+<mvc:View controllerName="com.sap.asianpaints.LetterOnRequestTaskUI.controller.CTCBonafide" displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core">
+    <App id="app">
+        <pages>
+            <Page id="page" title="{i18n>title}" showHeader="false">
+                <content>
+                    <Panel id="_IDGenCTCPanel1" visible="{= ${context>/RequestType} === 'CTC'}" class="sapUiLargeMarginBottom">
+                        <core:Fragment fragmentName="com.sap.asianpaints.LetterOnRequestTaskUI.view.fragments.CTC" type="XML" />
+                    </Panel>
+                    <Panel id="_IDGenBonafidePanel2" visible="{= ${context>/RequestType} === 'Bonafide'}" class="sapUiLargeMarginBottom">
+                        <core:Fragment fragmentName="com.sap.asianpaints.LetterOnRequestTaskUI.view.fragments.Bonafide" type="XML" />
+                    </Panel>
+                </content>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>

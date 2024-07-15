@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+	<edmx:DataServices m:DataServiceVersion="2.0" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+		<Schema Namespace="SFODataSet" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:sap="http://www.sap.com/Protocols/SAPData" xmlns:sf="http://www.successfactors.com/edm/sf">
+			<EntityContainer Name="EntityContainer" m:IsDefaultEntityContainer="true">
+				<EntitySet EntityType="SFOData.MyPendingWorkflow" Name="MyPendingWorkflow" sap:creatable="false" sap:deletable="false" sap:label="MyPendingWorkflow" sap:updatable="false" sap:upsertable="false">
+					<Documentation>
+						<Summary>MyPendingWorkflow</Summary>
+						<LongDescription>Contains information about pending workflow associated with an employee.</LongDescription>
+						<sap:tagcollection>
+							<sap:tag>Employee Central (EC)</sap:tag>
+							<sap:tag>EC - Workflow</sap:tag>
+						</sap:tagcollection>
+					</Documentation>
+				</EntitySet>
+				<EntitySet EntityType="SFOData.WfRequestParticipator" Name="WfRequestParticipator" sap:creatable="false" sap:deletable="false" sap:label="WfRequestParticipator" sap:updatable="false" sap:upsertable="false">
+					<Documentation>
+						<Summary>WfRequestParticipator</Summary>
+						<LongDescription>Contains information about users who are contributing to a workflow without approving.</LongDescription>
+						<sap:tagcollection>
+							<sap:tag>Employee Central (EC)</sap:tag>
+							<sap:tag>EC - Workflow</sap:tag>
+						</sap:tagcollection>
+					</Documentation>
+				</EntitySet>
+				<EntitySet EntityType="SFOData.WorkflowAllowedActionList" Name="WorkflowAllowedActionList" sap:creatable="false" sap:deletable="false" sap:label="WorkflowAllowedActionList" sap:updatable="false" sap:upsertable="false">
+					<Documentation>
+						<Summary>WorkflowAllowedActionList</Summary>
+						<LongDescription>Contains the list of workflow actions that the given employee is allowed based on their role.</LongDescription>
+						<sap:tagcollection>
+							<sap:tag>Employee Central (EC)</sap:tag>
+							<sap:tag>EC - Workflow</sap:tag>
+							<sap:tag>Results List Not Supported</sap:tag>
+						</sap:tagcollection>
+					</Documentation>
+				</EntitySet>
+				<EntitySet EntityType="SFOData.AlertMessage" Name="AlertMessage" sap:creatable="true" sap:deletable="true" sap:label="AlertMessage" sap:updatable="true" sap:upsertable="true">
+					<Documentation>
+						<Summary/>
+						<LongDescription/>
+						<sap:tagcollection>
+							<sap:tag>Employee Central (EC)</sap:tag>
+							<sap:tag>EC - Workflow</sap:tag>
+						</sap:tagcollection>
+					</Documentation>
+				</EntitySet>
+				<EntitySet EntityType="SFOData.WfRequestComments" Name="WfRequestComments" sap:creatable="false" sap:deletable="false" sap:label="WfRequestComments" sap:updatable="false" sap:upsertable="false">
+					<Documentation>
+						<Summary>WfRequestComments</Summary>
+						<LongDescription>Contains comments associated with a workflow item.</LongDescription>
+						<sap:tagcollection>
+							<sap:tag>Employee Central (EC)</sap:tag>
+							<sap:tag>EC - Workflow</sap:tag>
+						</sap:tagcollection>
+					</Documentation>
+				</EntitySet>
+				<EntitySet EntityType="SFOData.WfRequestStep" Name="WfRequestStep" sap:creatable="false" sap:deletable="false" sap:label="WfRequestStep" sap:updatable="false" sap:upsertable="false">
+					<Documentation>
+						<Summary>WfRequestStep</Summary>
+						<LongDescription>Contains information about a specific workflow step.</LongDescription>
+						<sap:tagcollection>
+							<sap:tag>Employee Central (EC)</sap:tag>
+							<sap:tag>EC - Workflow</sap:tag>
+						</sap:tagcollection>
+					</Documentation>
+				</EntitySet>
+				<EntitySet EntityType="SFOData.AutoDelegateDetail" Name="AutoDelegateDetail" sap:creatable="true" sap:deletable="true" sap:label="Auto Delegate Detail" sap:updatable="true" sap:upsertable="true">
+					<Documentation>
+						<Summary>AutoDelegateDetail</Summary>
+						<LongDescription/>
+						<sap:tagcollection>
+							<sap:tag>Employee Central (EC)</sap:tag>
+							<sap:tag>EC - Workflow</sap:tag>
+						</sap:tagcollection>
+					</Documentation>
+				</EntitySet>
+				<EntitySet EntityType="SFOData.AutoDelegateConfig" Name="AutoDelegateConfig" sap:creatable="true" sap:deletable="true" sap:label="Auto Delegate Config" sap:updatable="true" sap:upsertable="true">
+					<Documentation>
+						<Summary>AutoDelegateConfig</Summary>
+						<LongDescription/>
+						<sap:tagcollection>
+							<sap:tag>Employee Central (EC)</sap:tag>
+							<sap:tag>EC - Workflow</sap:tag>
+						</sap:tagcollection>
+					</Documentation>
+				</EntitySet>
+				<EntitySet EntityType="SFOData.EmpWfRequest" Name="EmpWfRequest" sap:creatable="false" sap:deletable="false" sap:label="EmpWfRequest" sap:updatable="false" sap:upsertable="false">
+					<Documentation>
+						<Summary>EmpWfRequest</Summary>
+						<LongDescription>Contains work flow requests associated with an employee.</LongDescription>
+						<sap:tagcollection>
+							<sap:tag>Employee Central (EC)</sap:tag>
+							<sap:tag>EC - Workflow</sap:tag>
+						</sap:tagcollection>
+					</Documentation>
+				</EntitySet>
+				<EntitySet EntityType="SFOData.WfRequest" Name="WfRequest" sap:creatable="false" sap:deletable="false" sap:label="WfRequest" sap:updatable="false" sap:upsertable="false">
+					<Documentation>
+						<Summary>WfRequest</Summary>
+						<LongDescription>Contains basic data of a workflow such as the overall status and the current step number.</LongDescription>
+						<sap:tagcollection>
+							<sap:tag>Employee Central (EC)</sap:tag>
+							<sap:tag>EC - Workflow</sap:tag>
+						</sap:tagcollection>
+					</Documentation>
+				</EntitySet>
+				<AssociationSet Association="SFOData.WfRequest_parent_WfRequest" Name="WfRequest_parent_WfRequest">
+					<End EntitySet="WfRequest" Role="WfRequest"/>
+					<End EntitySet="WfRequest" Role="WfRequest_parent"/>
+				</AssociationSet>
+				<AssociationSet Association="SFOData.AutoDelegateDetail_WfRequest" Name="AutoDelegateDetail_WfRequest">
+					<End EntitySet="AutoDelegateDetail" Role="AutoDelegateDetail"/>
+					<End EntitySet="WfRequest" Role="WfRequest"/>
+				</AssociationSet>
+				<AssociationSet Association="SFOData.WfRequest_WfRequestComments" Name="WfRequest_WfRequestComments">
+					<End EntitySet="WfRequestComments" Role="WfRequestComments"/>
+					<End EntitySet="WfRequest" Role="WfRequest"/>
+				</AssociationSet>
+				<AssociationSet Association="SFOData.WfRequest_EmpWfRequest" Name="WfRequest_EmpWfRequest">
+					<End EntitySet="EmpWfRequest" Role="EmpWfRequest"/>
+					<End EntitySet="WfRequest" Role="WfRequest"/>
+				</AssociationSet>
+				<AssociationSet Association="SFOData.AlertMessage_WfRequest" Name="AlertMessage_WfRequest">
+					<End EntitySet="AlertMessage" Role="AlertMessage"/>
+					<End EntitySet="WfRequest" Role="WfRequest"/>
+				</AssociationSet>
+				<AssociationSet Association="SFOData.WfRequest_WorkflowAllowedActionList" Name="WfRequest_WorkflowAllowedActionList">
+					<End EntitySet="WfRequest" Role="WfRequest"/>
+					<End EntitySet="WorkflowAllowedActionList" Role="WorkflowAllowedActionList"/>
+				</AssociationSet>
+				<AssociationSet Association="SFOData.autoDelegateDetails_of_AutoDelegateConfig" Name="autoDelegateDetails_of_AutoDelegateConfig">
+					<End EntitySet="AutoDelegateConfig" Role="AutoDelegateConfig"/>
+					<End EntitySet="AutoDelegateDetail" Role="asso_autoDelegateDetails"/>
+				</AssociationSet>
+				<AssociationSet Association="SFOData.WfRequest_WfRequestStep" Name="WfRequest_WfRequestStep">
+					<End EntitySet="WfRequestStep" Role="WfRequestStep"/>
+					<End EntitySet="WfRequest" Role="WfRequest"/>
+				</AssociationSet>
+				<AssociationSet Association="SFOData.AutoDelegateConfig_WfRequest" Name="AutoDelegateConfig_WfRequest">
+					<End EntitySet="AutoDelegateConfig" Role="AutoDelegateConfig"/>
+					<End EntitySet="WfRequest" Role="WfRequest"/>
+				</AssociationSet>
+				<AssociationSet Association="SFOData.WfRequest_WfRequestParticipator" Name="WfRequest_WfRequestParticipator">
+					<End EntitySet="WfRequestParticipator" Role="WfRequestParticipator"/>
+					<End EntitySet="WfRequest" Role="WfRequest"/>
+				</AssociationSet>
+				<FunctionImport Name="approveWfRequest" ReturnType="Collection(SFOData.WfRequestActionResponse)" m:HttpMethod="POST" sap:support-payload="false">
+					<Documentation>
+						<Summary/>
+						<LongDescription/>
+						<sap:tagcollection>
+							<sap:tag>Employee Central (EC)</sap:tag>
+							<sap:tag>EC - Workflow</sap:tag>
+						</sap:tagcollection>
+					</Documentation>
+					<Parameter Name="wfRequestId" Type="Edm.Int64"/>
+					<Parameter Name="comment" Type="Edm.String"/>
+				</FunctionImport>
+				<FunctionImport Name="commentWfRequest" ReturnType="Collection(SFOData.WfRequestActionResponse)" m:HttpMethod="POST" sap:support-payload="false">
+					<Documentation>
+						<Summary/>
+						<LongDescription/>
+						<sap:tagcollection>
+							<sap:tag>Employee Central (EC)</sap:tag>
+							<sap:tag>EC - Workflow</sap:tag>
+						</sap:tagcollection>
+					</Documentation>
+					<Parameter Name="wfRequestId" Type="Edm.Int64"/>
+					<Parameter Name="comment" Type="Edm.String"/>
+				</FunctionImport>
+				<FunctionImport Name="rejectWfRequest" ReturnType="Collection(SFOData.WfRequestActionResponse)" m:HttpMethod="POST" sap:support-payload="false">
+					<Documentation>
+						<Summary/>
+						<LongDescription/>
+						<sap:tagcollection>
+							<sap:tag>Employee Central (EC)</sap:tag>
+							<sap:tag>EC - Workflow</sap:tag>
+						</sap:tagcollection>
+					</Documentation>
+					<Parameter Name="wfRequestId" Type="Edm.Int64"/>
+					<Parameter Name="comment" Type="Edm.String"/>
+				</FunctionImport>
+				<FunctionImport Name="sendbackWfRequest" ReturnType="Collection(SFOData.WfRequestActionResponse)" m:HttpMethod="POST" sap:support-payload="false">
+					<Documentation>
+						<Summary/>
+						<LongDescription/>
+						<sap:tagcollection>
+							<sap:tag>Employee Central (EC)</sap:tag>
+							<sap:tag>EC - Workflow</sap:tag>
+						</sap:tagcollection>
+					</Documentation>
+					<Parameter Name="wfRequestId" Type="Edm.Int64"/>
+					<Parameter Name="comment" Type="Edm.String"/>
+				</FunctionImport>
+				<FunctionImport Name="getWorkflowPendingData" ReturnType="Collection(SFOData.WfRequestPendingDataResponse)" m:HttpMethod="POST" sap:support-payload="false">
+					<Documentation>
+						<Summary/>
+						<LongDescription/>
+						<sap:tagcollection>
+							<sap:tag>Employee Central (EC)</sap:tag>
+							<sap:tag>EC - Workflow</sap:tag>
+						</sap:tagcollection>
+					</Documentation>
+					<Parameter Name="wfRequestId" Type="Edm.Int64"/>
+				</FunctionImport>
+				<FunctionImport Name="withdrawWfRequest" ReturnType="Collection(SFOData.WfRequestActionResponse)" m:HttpMethod="POST" sap:support-payload="false">
+					<Documentation>
+						<Summary/>
+						<LongDescription/>
+						<sap:tagcollection>
+							<sap:tag>Employee Central (EC)</sap:tag>
+							<sap:tag>EC - Workflow</sap:tag>
+						</sap:tagcollection>
+					</Documentation>
+					<Parameter Name="wfRequestId" Type="Edm.Int64"/>
+					<Parameter Name="comment" Type="Edm.String"/>
+				</FunctionImport>
+			</EntityContainer>
+		</Schema>
+		<Schema Namespace="SFOData" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:sap="http://www.successfactors.com/edm/sap" xmlns:sf="http://www.successfactors.com/edm/sf">
+			<EntityType Name="MyPendingWorkflow">
+				<Key>
+					<PropertyRef Name="wfRequestId"/>
+				</Key>
+				<Property Name="desc" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="Description" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="subject" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="Subject" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="url" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="URL" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="wfRequestId" Nullable="false" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="WF Request ID" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+			</EntityType>
+			<EntityType Name="WfRequestParticipator">
+				<Key>
+					<PropertyRef Name="wfRequestParticipatorId"/>
+				</Key>
+				<Property MaxLength="32" Name="actorType" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Actor Type" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="100" Name="createdBy" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Created By" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="createdDateTime" Nullable="true" Type="Edm.DateTimeOffset" sap:creatable="false" sap:filterable="true" sap:label="Created Date Time" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="createdOn" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Created On" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="100" Name="lastModifiedBy" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Last Modified By" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="lastModifiedDateTime" Nullable="true" Type="Edm.DateTimeOffset" sap:creatable="false" sap:filterable="true" sap:label="Last Modified Date Time" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="lastModifiedOn" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Last Modified On" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="100" Name="ownerId" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Owner Id" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="32" Name="participatorType" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Participator Type" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="processingOrder" Nullable="true" Type="Edm.Int64" sap:creatable="false" sap:filterable="true" sap:label="Processing Order" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="32" Name="relatedTo" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Related To" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="100" Name="roleId" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Role Id" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="wfRequestId" Nullable="true" Type="Edm.Int64" sap:creatable="false" sap:filterable="true" sap:label="Workflow Request Id" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="wfRequestParticipatorId" Nullable="false" Type="Edm.Int64" sap:creatable="false" sap:filterable="true" sap:label="Workflow Request Participator Id" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+			</EntityType>
+			<EntityType Name="WorkflowAllowedActionList">
+				<Key>
+					<PropertyRef Name="wfRequestId"/>
+				</Key>
+				<Property Name="allowApprove" Nullable="true" Type="Edm.Boolean" sap:creatable="false" sap:filterable="false" sap:label="Allow Approve" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="allowDelegateDecline" Nullable="true" Type="Edm.Boolean" sap:creatable="false" sap:filterable="false" sap:label="Allow Delegate Decline" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="allowDelegateGrant" Nullable="true" Type="Edm.Boolean" sap:creatable="false" sap:filterable="false" sap:label="Allow Delegate Grant" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="allowDelegateRevoke" Nullable="true" Type="Edm.Boolean" sap:creatable="false" sap:filterable="false" sap:label="Allow Delegate Revoke" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="allowPostComment" Nullable="true" Type="Edm.Boolean" sap:creatable="false" sap:filterable="false" sap:label="Allow Post Comment" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="allowReject" Nullable="true" Type="Edm.Boolean" sap:creatable="false" sap:filterable="false" sap:label="Allow Reject" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="allowResubmit" Nullable="true" Type="Edm.Boolean" sap:creatable="false" sap:filterable="false" sap:label="Allow Resubmit" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="allowSendback" Nullable="true" Type="Edm.Boolean" sap:creatable="false" sap:filterable="false" sap:label="Allow Sendback" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="allowUpdateRequest" Nullable="true" Type="Edm.Boolean" sap:creatable="false" sap:filterable="false" sap:label="Allow Update Request" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="allowWithdraw" Nullable="true" Type="Edm.Boolean" sap:creatable="false" sap:filterable="false" sap:label="Allow Withdraw" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="wfRequestId" Nullable="false" Type="Edm.Int64" sap:creatable="false" sap:filterable="true" sap:label="Workflow Request Id" sap:required="true" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+			</EntityType>
+			<EntityType Name="AlertMessage">
+				<Key>
+					<PropertyRef Name="externalCode"/>
+				</Key>
+				<Property MaxLength="255" Name="alertDescription" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="alertDescription" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertDescriptionLocalized_de_DE" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="alertDescriptionLocalized" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertDescriptionLocalized_defaultValue" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="alertDescriptionLocalized" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertDescriptionLocalized_en_GB" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="alertDescriptionLocalized" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertDescriptionLocalized_en_US" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="alertDescriptionLocalized" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertDescriptionLocalized_es_ES" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="alertDescriptionLocalized" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertDescriptionLocalized_fr_FR" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="alertDescriptionLocalized" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertDescriptionLocalized_ja_JP" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="alertDescriptionLocalized" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertDescriptionLocalized_ko_KR" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="alertDescriptionLocalized" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertDescriptionLocalized_localized" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="false" sap:label="alertDescriptionLocalized" sap:required="false" sap:sortable="false" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertDescriptionLocalized_nl_NL" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="alertDescriptionLocalized" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertDescriptionLocalized_pt_BR" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="alertDescriptionLocalized" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertDescriptionLocalized_pt_PT" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="alertDescriptionLocalized" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertDescriptionLocalized_ru_RU" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="alertDescriptionLocalized" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertDescriptionLocalized_zh_CN" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="alertDescriptionLocalized" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertDescriptionLocalized_zh_TW" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="alertDescriptionLocalized" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertHeader" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="alertHeader" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertHeaderLocalized_de_DE" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="alertHeaderLocalized" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertHeaderLocalized_defaultValue" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="alertHeaderLocalized" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertHeaderLocalized_en_GB" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="alertHeaderLocalized" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertHeaderLocalized_en_US" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="alertHeaderLocalized" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertHeaderLocalized_es_ES" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="alertHeaderLocalized" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertHeaderLocalized_fr_FR" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="alertHeaderLocalized" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertHeaderLocalized_ja_JP" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="alertHeaderLocalized" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertHeaderLocalized_ko_KR" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="alertHeaderLocalized" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertHeaderLocalized_localized" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="false" sap:label="alertHeaderLocalized" sap:required="false" sap:sortable="false" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertHeaderLocalized_nl_NL" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="alertHeaderLocalized" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertHeaderLocalized_pt_BR" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="alertHeaderLocalized" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertHeaderLocalized_pt_PT" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="alertHeaderLocalized" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertHeaderLocalized_ru_RU" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="alertHeaderLocalized" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertHeaderLocalized_zh_CN" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="alertHeaderLocalized" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="alertHeaderLocalized_zh_TW" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="alertHeaderLocalized" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="createdBy" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="mdfSystemCreatedBy" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="createdDateTime" Nullable="true" Type="Edm.DateTimeOffset" sap:creatable="false" sap:filterable="true" sap:label="mdfSystemCreatedDate" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="255" Name="effectiveStatus" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="effectiveStatus" sap:required="true" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="128" Name="externalCode" Nullable="false" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="externalCode" sap:required="true" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="128" Name="externalName" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="externalName" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="lastModifiedBy" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="mdfSystemLastModifiedBy" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="lastModifiedDateTime" Nullable="true" Type="Edm.DateTimeOffset" sap:creatable="false" sap:filterable="true" sap:label="mdfSystemLastModifiedDate" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="255" Name="mdfSystemCreatedBy" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="mdfSystemCreatedBy" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="mdfSystemCreatedDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="mdfSystemCreatedDate" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="mdfSystemEffectiveEndDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="mdfSystemEffectiveEndDate" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="mdfSystemEffectiveStartDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="mdfSystemEffectiveStartDate" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="255" Name="mdfSystemEntityId" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="mdfSystemEntityId" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="255" Name="mdfSystemLastModifiedBy" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="mdfSystemLastModifiedBy" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="mdfSystemLastModifiedDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="mdfSystemLastModifiedDate" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="mdfSystemLastModifiedDateWithTZ" Nullable="true" Type="Edm.DateTimeOffset" sap:creatable="false" sap:filterable="true" sap:label="mdfSystemLastModifiedDate" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="255" Name="mdfSystemObjectType" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="mdfSystemObjectType" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="255" Name="mdfSystemRecordId" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="mdfSystemRecordId" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="255" Name="mdfSystemRecordStatus" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="mdfSystemRecordStatus" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="mdfSystemTransactionSequence" Nullable="true" Type="Edm.Int64" sap:creatable="false" sap:filterable="true" sap:label="mdfSystemTransactionSequence" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="mdfSystemVersionId" Nullable="true" Type="Edm.Int64" sap:creatable="false" sap:filterable="true" sap:label="mdfSystemVersionId" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<NavigationProperty FromRole="AlertMessage" Name="wfRequestNav" Relationship="SFOData.AlertMessage_WfRequest" ToRole="WfRequest" sap:creatable="false" sap:filterable="true" sap:label="wfRequestNav" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+			</EntityType>
+			<EntityType Name="WfRequestComments">
+				<Key>
+					<PropertyRef Name="wfRequestCommentId"/>
+				</Key>
+				<Property MaxLength="30" Name="actionType" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Action Type" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="4000" Name="comments" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="Comments" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="100" Name="createdBy" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Created By" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="createdDateTime" Nullable="true" Type="Edm.DateTimeOffset" sap:creatable="false" sap:filterable="true" sap:label="Created Date Time" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="createdOn" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Created On" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="100" Name="lastModifiedBy" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Last Modified By" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="lastModifiedDateTime" Nullable="true" Type="Edm.DateTimeOffset" sap:creatable="false" sap:filterable="true" sap:label="Last Modified Date Time" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="lastModifiedOn" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Last Modified On" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="100" Name="userId" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="User Id" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="wfRequestCommentId" Nullable="false" Type="Edm.Int64" sap:creatable="false" sap:filterable="true" sap:label="Workflow Request Comment Id" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="wfRequestId" Nullable="true" Type="Edm.Int64" sap:creatable="false" sap:filterable="true" sap:label="Workflow Request Id" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="wfRequestStepId" Nullable="true" Type="Edm.Int64" sap:creatable="false" sap:filterable="true" sap:label="Workflow Request Step Id" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+			</EntityType>
+			<EntityType Name="WfRequestStep">
+				<Key>
+					<PropertyRef Name="wfRequestStepId"/>
+				</Key>
+				<Property MaxLength="32" Name="actionType" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="Action Type" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="32" Name="approverType" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Approver Type" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="100" Name="createdBy" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Created By" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="createdDateTime" Nullable="true" Type="Edm.DateTimeOffset" sap:creatable="false" sap:filterable="true" sap:label="Created Date Time" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="createdOn" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Created On" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="100" Name="lastModifiedBy" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Last Modified By" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="lastModifiedDateTime" Nullable="true" Type="Edm.DateTimeOffset" sap:creatable="false" sap:filterable="true" sap:label="Last Modified Date Time" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="lastModifiedOn" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Last Modified On" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="100" Name="ownerId" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Owner Id" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="100" Name="processedBy" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Processed By" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="32" Name="relatedTo" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Related To" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="30" Name="role" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Role" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="30" Name="status" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Status" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="stepNum" Nullable="true" Type="Edm.Int64" sap:creatable="false" sap:filterable="true" sap:label="Step Number" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="wfRequestId" Nullable="true" Type="Edm.Int64" sap:creatable="false" sap:filterable="true" sap:label="WfRequest Id" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="wfRequestStepId" Nullable="false" Type="Edm.Int64" sap:creatable="false" sap:filterable="true" sap:label="WfRequestStep Id" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<NavigationProperty FromRole="WfRequestStep" Name="wfRequestNav" Relationship="SFOData.WfRequest_WfRequestStep" ToRole="WfRequest" sap:creatable="false" sap:filterable="true" sap:label="wfRequestNav" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+			</EntityType>
+			<EntityType Name="AutoDelegateDetail">
+				<Key>
+					<PropertyRef Name="AutoDelegateConfig_delegator"/>
+					<PropertyRef Name="externalCode"/>
+				</Key>
+				<Property MaxLength="100" Name="AutoDelegateConfig_delegator" Nullable="false" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="Auto Delegate Config_delegator" sap:required="true" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property Name="alwaysOn" Nullable="true" Type="Edm.Boolean" sap:creatable="true" sap:filterable="true" sap:label="alwaysOn" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="createdBy" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="createdBy" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="createdDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="createdDate" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="createdDateTime" Nullable="true" Type="Edm.DateTimeOffset" sap:creatable="false" sap:filterable="true" sap:label="createdDate" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="100" Name="delegatee" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="delegatee" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="128" Name="externalCode" Nullable="false" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="externalCode" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="lastModifiedBy" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="lastModifiedBy" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="lastModifiedDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="lastModifiedDate" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="lastModifiedDateTime" Nullable="true" Type="Edm.DateTimeOffset" sap:creatable="false" sap:filterable="true" sap:label="lastModifiedDate" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="lastModifiedDateWithTZ" Nullable="true" Type="Edm.DateTimeOffset" sap:creatable="false" sap:filterable="true" sap:label="lastModifiedDate" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="mdfSystemEffectiveEndDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="mdfSystemEffectiveEndDate" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="mdfSystemEffectiveStartDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="mdfSystemEffectiveStartDate" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="255" Name="mdfSystemEntityId" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="mdfSystemEntityId" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="255" Name="mdfSystemObjectType" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="mdfSystemObjectType" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="255" Name="mdfSystemRecordId" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="mdfSystemRecordId" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="255" Name="mdfSystemRecordStatus" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="mdfSystemRecordStatus" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="255" Name="mdfSystemStatus" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="mdfSystemStatus" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="mdfSystemTransactionSequence" Nullable="true" Type="Edm.Int64" sap:creatable="false" sap:filterable="true" sap:label="mdfSystemTransactionSequence" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="mdfSystemVersionId" Nullable="true" Type="Edm.Int64" sap:creatable="false" sap:filterable="true" sap:label="mdfSystemVersionId" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="255" Name="status" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="status" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+			</EntityType>
+			<EntityType Name="AutoDelegateConfig">
+				<Key>
+					<PropertyRef Name="delegator"/>
+				</Key>
+				<Property MaxLength="255" Name="createdBy" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="createdBy" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="createdDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="createdDate" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="createdDateTime" Nullable="true" Type="Edm.DateTimeOffset" sap:creatable="false" sap:filterable="true" sap:label="createdDate" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="100" Name="delegator" Nullable="false" Type="Edm.String" sap:creatable="true" sap:filterable="true" sap:label="delegator" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="255" Name="lastModifiedBy" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="lastModifiedBy" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="lastModifiedDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="lastModifiedDate" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="lastModifiedDateTime" Nullable="true" Type="Edm.DateTimeOffset" sap:creatable="false" sap:filterable="true" sap:label="lastModifiedDate" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="lastModifiedDateWithTZ" Nullable="true" Type="Edm.DateTimeOffset" sap:creatable="false" sap:filterable="true" sap:label="lastModifiedDate" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="mdfSystemEffectiveEndDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="mdfSystemEffectiveEndDate" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="mdfSystemEffectiveStartDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="mdfSystemEffectiveStartDate" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="255" Name="mdfSystemEntityId" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="mdfSystemEntityId" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="255" Name="mdfSystemObjectType" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="mdfSystemObjectType" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="255" Name="mdfSystemRecordId" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="mdfSystemRecordId" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="255" Name="mdfSystemRecordStatus" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="mdfSystemRecordStatus" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="255" Name="mdfSystemStatus" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="mdfSystemStatus" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="mdfSystemTransactionSequence" Nullable="true" Type="Edm.Int64" sap:creatable="false" sap:filterable="true" sap:label="mdfSystemTransactionSequence" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="mdfSystemVersionId" Nullable="true" Type="Edm.Int64" sap:creatable="false" sap:filterable="true" sap:label="mdfSystemVersionId" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<NavigationProperty FromRole="AutoDelegateConfig" Name="autoDelegateDetails" Relationship="SFOData.autoDelegateDetails_of_AutoDelegateConfig" ToRole="asso_autoDelegateDetails" sap:creatable="true" sap:field-control="AutoDelegateConfigFieldControlsNav/autoDelegateDetails" sap:filterable="true" sap:label="Auto Delegate Details" sap:required="false" sap:sortable="true" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<NavigationProperty FromRole="AutoDelegateConfig" Name="wfRequestNav" Relationship="SFOData.AutoDelegateConfig_WfRequest" ToRole="WfRequest" sap:creatable="false" sap:filterable="true" sap:label="wfRequestNav" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+			</EntityType>
+			<EntityType Name="EmpWfRequest">
+				<Key>
+					<PropertyRef Name="empWfRequestId"/>
+				</Key>
+				<Property MaxLength="128" Name="actionType" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="Action Type" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="effectiveDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Effective Date" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="empWfRequestId" Nullable="false" Type="Edm.Int64" sap:creatable="false" sap:filterable="true" sap:label="EmpWfRequest Id" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="128" Name="entityType" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="Entity Type" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="32" Name="eventReason" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Event Reason" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="128" Name="requestType" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Request Type" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="1024" Name="subjectId" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Subject Id" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="32" Name="wfConfig" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="WfConfig" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="wfRequestId" Nullable="true" Type="Edm.Int64" sap:creatable="false" sap:filterable="true" sap:label="WfRequest Id" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+			</EntityType>
+			<EntityType Name="WfRequest">
+				<Key>
+					<PropertyRef Name="wfRequestId"/>
+				</Key>
+				<Property MaxLength="100" Name="createdBy" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Created By" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="createdDateTime" Nullable="true" Type="Edm.DateTimeOffset" sap:creatable="false" sap:filterable="true" sap:label="Created Date Time" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="createdOn" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Created On" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="currentStepNum" Nullable="true" Type="Edm.Int32" sap:creatable="false" sap:filterable="false" sap:label="Current Step Number" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="100" Name="lastModifiedBy" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Last Modified By" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="lastModifiedDateTime" Nullable="true" Type="Edm.DateTimeOffset" sap:creatable="false" sap:filterable="true" sap:label="Last Modified Date Time" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="lastModifiedOn" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Last Modified On" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="128" Name="module" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Module" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="parentWfRequestId" Nullable="true" Type="Edm.Int64" sap:creatable="false" sap:filterable="false" sap:label="Parent WfRequest Id" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="reminderSentDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="false" sap:label="Reminder Sent Date" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="30" Name="status" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Status" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="totalSteps" Nullable="true" Type="Edm.Int32" sap:creatable="false" sap:filterable="false" sap:label="Total Steps" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="url" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="URL" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="wfRequestId" Nullable="false" Type="Edm.Int64" sap:creatable="false" sap:filterable="true" sap:label="WfRequest Id" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<NavigationProperty FromRole="WfRequest" Name="empWfRequestNav" Relationship="SFOData.WfRequest_EmpWfRequest" ToRole="EmpWfRequest" sap:creatable="false" sap:filterable="true" sap:label="empWfRequestNav" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<NavigationProperty FromRole="WfRequest" Name="parentWfRequestNav" Relationship="SFOData.WfRequest_parent_WfRequest" ToRole="WfRequest_parent" sap:creatable="false" sap:filterable="true" sap:label="parentWfRequestNav" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<NavigationProperty FromRole="WfRequest" Name="wfRequestCommentsNav" Relationship="SFOData.WfRequest_WfRequestComments" ToRole="WfRequestComments" sap:creatable="false" sap:filterable="true" sap:label="wfRequestCommentsNav" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<NavigationProperty FromRole="WfRequest" Name="wfRequestParticipatorNav" Relationship="SFOData.WfRequest_WfRequestParticipator" ToRole="WfRequestParticipator" sap:creatable="false" sap:filterable="true" sap:label="wfRequestParticipatorNav" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<NavigationProperty FromRole="WfRequest" Name="wfRequestStepNav" Relationship="SFOData.WfRequest_WfRequestStep" ToRole="WfRequestStep" sap:creatable="false" sap:filterable="true" sap:label="wfRequestStepNav" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<NavigationProperty FromRole="WfRequest" Name="workflowAllowedActionListNav" Relationship="SFOData.WfRequest_WorkflowAllowedActionList" ToRole="WorkflowAllowedActionList" sap:creatable="false" sap:filterable="true" sap:label="workflowAllowedActionListNav" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+			</EntityType>
+			<ComplexType Name="WfRequestActionResponse">
+				<Documentation>
+					<Summary/>
+					<LongDescription/>
+					<sap:tagcollection>
+						<sap:tag>Employee Central (EC)</sap:tag>
+						<sap:tag>EC - Workflow</sap:tag>
+					</sap:tagcollection>
+				</Documentation>
+				<Property Name="status" Nullable="true" Type="Edm.String" sap:creatable="true" sap:filterable="false" sap:label="status" sap:required="false" sap:sortable="false" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+				<Property Name="wfRequestId" Nullable="true" Type="Edm.Int64" sap:creatable="true" sap:filterable="false" sap:label="wfRequestId" sap:required="false" sap:sortable="false" sap:updatable="true" sap:upsertable="true" sap:visible="true"/>
+			</ComplexType>
+			<ComplexType Name="ChangeDataBean">
+				<Documentation>
+					<Summary/>
+					<LongDescription/>
+					<sap:tagcollection>
+						<sap:tag>Employee Central (EC)</sap:tag>
+						<sap:tag>EC - Workflow</sap:tag>
+					</sap:tagcollection>
+				</Documentation>
+				<Property Name="label" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="label" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="newValue" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="newValue" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="oldValue" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="oldValue" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+			</ComplexType>
+			<ComplexType Name="PendingDataAttributeBean">
+				<Documentation>
+					<Summary/>
+					<LongDescription/>
+					<sap:tagcollection>
+						<sap:tag>Employee Central (EC)</sap:tag>
+						<sap:tag>EC - Workflow</sap:tag>
+					</sap:tagcollection>
+				</Documentation>
+				<Property Name="entityName" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="entityName" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="fieldId" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="fieldId" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="fieldName" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="fieldName" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="id" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="id" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="label" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="label" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="newValue" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="newValue" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="oldValue" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="oldValue" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property CollectionKind="List" Name="payComponents" Nullable="true" Type="SFOData.ChangeDataBean" sap:creatable="false" sap:filterable="false" sap:label="payComponents" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="type" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="type" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+			</ComplexType>
+			<ComplexType Name="EssMssWorkflowAttributeBean">
+				<Documentation>
+					<Summary/>
+					<LongDescription/>
+					<sap:tagcollection>
+						<sap:tag>Employee Central (EC)</sap:tag>
+						<sap:tag>EC - Workflow</sap:tag>
+					</sap:tagcollection>
+				</Documentation>
+				<Property CollectionKind="List" Name="changeSet" Nullable="true" Type="SFOData.PendingDataAttributeBean" sap:creatable="false" sap:filterable="false" sap:label="changeSet" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="entityName" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="entityName" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="fieldId" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="fieldId" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="fieldName" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="fieldName" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="id" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="id" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="label" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="label" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="newValue" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="newValue" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="oldValue" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="oldValue" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property CollectionKind="List" Name="payComponents" Nullable="true" Type="SFOData.ChangeDataBean" sap:creatable="false" sap:filterable="false" sap:label="payComponents" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="type" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="type" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+			</ComplexType>
+			<ComplexType Name="PendDataInlineGroupBean">
+				<Documentation>
+					<Summary/>
+					<LongDescription/>
+					<sap:tagcollection>
+						<sap:tag>Employee Central (EC)</sap:tag>
+						<sap:tag>EC - Workflow</sap:tag>
+					</sap:tagcollection>
+				</Documentation>
+				<Property CollectionKind="List" Name="changeSet" Nullable="true" Type="SFOData.EssMssWorkflowAttributeBean" sap:creatable="false" sap:filterable="false" sap:label="changeSet" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property CollectionKind="List" Name="subChangeSetGroups" Nullable="true" Type="SFOData.EssMssWorkflowSubAttributeBean" sap:creatable="false" sap:filterable="false" sap:label="subChangeSetGroups" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="title" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="title" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+			</ComplexType>
+			<ComplexType Name="PendDataGroupBean">
+				<Documentation>
+					<Summary/>
+					<LongDescription/>
+					<sap:tagcollection>
+						<sap:tag>Employee Central (EC)</sap:tag>
+						<sap:tag>EC - Workflow</sap:tag>
+					</sap:tagcollection>
+				</Documentation>
+				<Property CollectionKind="List" Name="changeSet" Nullable="true" Type="SFOData.EssMssWorkflowAttributeBean" sap:creatable="false" sap:filterable="false" sap:label="changeSet" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property CollectionKind="List" Name="inlineGroups" Nullable="true" Type="SFOData.PendDataInlineGroupBean" sap:creatable="false" sap:filterable="false" sap:label="inlineGroups" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property CollectionKind="List" Name="subChangeSetGroups" Nullable="true" Type="SFOData.EssMssWorkflowSubAttributeBean" sap:creatable="false" sap:filterable="false" sap:label="subChangeSetGroups" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="title" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="title" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+			</ComplexType>
+			<ComplexType Name="EssMssWorkflowSubAttributeBean">
+				<Documentation>
+					<Summary/>
+					<LongDescription/>
+					<sap:tagcollection>
+						<sap:tag>Employee Central (EC)</sap:tag>
+						<sap:tag>EC - Workflow</sap:tag>
+					</sap:tagcollection>
+				</Documentation>
+				<Property CollectionKind="List" Name="changeSet" Nullable="true" Type="SFOData.EssMssWorkflowAttributeBean" sap:creatable="false" sap:filterable="false" sap:label="changeSet" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="changeSetGroupSubTitle" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="changeSetGroupSubTitle" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+			</ComplexType>
+			<ComplexType Name="EssMssWorkflowAttributeGroupBean">
+				<Documentation>
+					<Summary/>
+					<LongDescription/>
+					<sap:tagcollection>
+						<sap:tag>Employee Central (EC)</sap:tag>
+						<sap:tag>EC - Workflow</sap:tag>
+					</sap:tagcollection>
+				</Documentation>
+				<Property CollectionKind="List" Name="changeSet" Nullable="true" Type="SFOData.EssMssWorkflowAttributeBean" sap:creatable="false" sap:filterable="false" sap:label="changeSet" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property CollectionKind="List" Name="groups" Nullable="true" Type="SFOData.PendDataGroupBean" sap:creatable="false" sap:filterable="false" sap:label="groups" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property CollectionKind="List" Name="subChangeSetGroups" Nullable="true" Type="SFOData.EssMssWorkflowSubAttributeBean" sap:creatable="false" sap:filterable="false" sap:label="subChangeSetGroups" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="title" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="title" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+			</ComplexType>
+			<ComplexType Name="WfRequestPendingDataResponse">
+				<Documentation>
+					<Summary/>
+					<LongDescription/>
+					<sap:tagcollection>
+						<sap:tag>Employee Central (EC)</sap:tag>
+						<sap:tag>EC - Workflow</sap:tag>
+					</sap:tagcollection>
+				</Documentation>
+				<Property Name="wfRequestId" Nullable="true" Type="Edm.Int64" sap:creatable="false" sap:filterable="false" sap:label="wfRequestId" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property CollectionKind="List" Name="workflowAttributeGroups" Nullable="true" Type="SFOData.EssMssWorkflowAttributeGroupBean" sap:creatable="false" sap:filterable="false" sap:label="workflowAttributeGroups" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+			</ComplexType>
+			<Association Name="WfRequest_parent_WfRequest">
+				<End Multiplicity="*" Role="WfRequest" Type="SFOData.WfRequest"/>
+				<End Multiplicity="0..1" Role="WfRequest_parent" Type="SFOData.WfRequest"/>
+			</Association>
+			<Association Name="AutoDelegateDetail_WfRequest">
+				<End Multiplicity="1" Role="AutoDelegateDetail" Type="SFOData.AutoDelegateDetail"/>
+				<End Multiplicity="*" Role="WfRequest" Type="SFOData.WfRequest"/>
+			</Association>
+			<Association Name="WfRequest_WfRequestComments">
+				<End Multiplicity="*" Role="WfRequestComments" Type="SFOData.WfRequestComments"/>
+				<End Multiplicity="1" Role="WfRequest" Type="SFOData.WfRequest"/>
+			</Association>
+			<Association Name="WfRequest_EmpWfRequest">
+				<End Multiplicity="0..1" Role="EmpWfRequest" Type="SFOData.EmpWfRequest"/>
+				<End Multiplicity="1" Role="WfRequest" Type="SFOData.WfRequest"/>
+			</Association>
+			<Association Name="AlertMessage_WfRequest">
+				<End Multiplicity="1" Role="AlertMessage" Type="SFOData.AlertMessage"/>
+				<End Multiplicity="*" Role="WfRequest" Type="SFOData.WfRequest"/>
+			</Association>
+			<Association Name="WfRequest_WorkflowAllowedActionList">
+				<End Multiplicity="1" Role="WfRequest" Type="SFOData.WfRequest"/>
+				<End Multiplicity="*" Role="WorkflowAllowedActionList" Type="SFOData.WorkflowAllowedActionList"/>
+			</Association>
+			<Association Name="autoDelegateDetails_of_AutoDelegateConfig">
+				<End Multiplicity="1" Role="AutoDelegateConfig" Type="SFOData.AutoDelegateConfig"/>
+				<End Multiplicity="*" Role="asso_autoDelegateDetails" Type="SFOData.AutoDelegateDetail"/>
+			</Association>
+			<Association Name="WfRequest_WfRequestStep">
+				<End Multiplicity="*" Role="WfRequestStep" Type="SFOData.WfRequestStep"/>
+				<End Multiplicity="1" Role="WfRequest" Type="SFOData.WfRequest"/>
+			</Association>
+			<Association Name="AutoDelegateConfig_WfRequest">
+				<End Multiplicity="1" Role="AutoDelegateConfig" Type="SFOData.AutoDelegateConfig"/>
+				<End Multiplicity="*" Role="WfRequest" Type="SFOData.WfRequest"/>
+			</Association>
+			<Association Name="WfRequest_WfRequestParticipator">
+				<End Multiplicity="*" Role="WfRequestParticipator" Type="SFOData.WfRequestParticipator"/>
+				<End Multiplicity="1" Role="WfRequest" Type="SFOData.WfRequest"/>
+			</Association>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

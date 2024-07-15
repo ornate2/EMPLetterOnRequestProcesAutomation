@@ -1,0 +1,67 @@
+<core:FragmentDefinition id="CTC" 
+    xmlns="sap.m" 
+    xmlns:t="sap.ui.table" 
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form" 
+    xmlns:core="sap.ui.core">
+
+    <VBox id="_IDCTCVBox" fitContainer="true" class="sapUiLargeMarginBottom">
+
+        <f:SimpleForm id="_IDCTCSimpleForm" minWidth="1024" maxContainerCols="2" editable="false"
+            layout="ResponsiveGridLayout" labelSpanL="4" labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2"
+            columnsM="2">
+            <f:content>
+                <Label id="_IDReqPurposeLabel" text="Request Purpose" />
+                <Input id="_IDReqPurposeInput" value="{context>/RequestData/RequestPurpose}" editable="false" />
+                <Label id="_IDCommentLabel" text="Employee Comment" />
+                <Input id="_IDCommentInput" value="{context>/RequestData/Comment}" editable="false" />
+                <Label id="_IDContentLabel" text="Content" />
+                <Input id="_IDContentInput" value="{context>/RequestData/Content}" />
+                <Label id="_IDPurposeLabel" text="Issue Purpose" />
+                <Input id="_IDPurposeInput" value="{context>/RequestData/IssuePurpose}" />
+                <core:Title id="_IDGenCTCTitle1" text="" />
+            </f:content>
+            <f:layoutData>
+                <FlexItemData id="_IDCTCFlexItemData" shrinkFactor="0" backgroundDesign="Solid"
+                    styleClass="sapContrastPlus" />
+            </f:layoutData>
+        </f:SimpleForm>
+
+        <Table id="_IDCTCTable" inset="false" mode="Delete" delete=".onCTCComponentDelete" 
+            items="{
+			    path: 'context>/RequestData/CTCComponents'
+		    }">
+            <headerToolbar>
+                <OverflowToolbar id="_IDCTCOverflowToolbar">
+                    <Title id="_IDCTCComponentsTitle" text="CTC Components" />
+                    <ToolbarSpacer id="_IDCTCToolbarSpacer" />
+                    <Button id="_IDCTCPDFButton" icon="sap-icon://pdf-attachment" tooltip="View CTC PDF"
+                        press=".onCTCPreview" />
+                    <Button id="_IDAddCTCComponentButton" icon="sap-icon://add" tooltip="Click to add CTC Component."
+                        press=".onAddCTCComponent" />
+                </OverflowToolbar>
+            </headerToolbar>
+            <columns>
+                <Column id="_IDGenCTCColumn1">
+                    <Text id="_IDGenCTCText1" text="Component" />
+                </Column>
+                <Column id="_IDGenCTCColumn2">
+                    <Text id="_IDGenCTCText2" text="Per Month" />
+                </Column>
+                <Column id="_IDGenCTCColumn3">
+                    <Text id="_IDGenCTCText3" text="Per Annum" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem id="_IDGenCTCColumnListItem1" vAlign="Middle">
+                    <cells>
+                        <Input id="_IDGenCTCInput1" value="{context>Component}" />
+                        <Input id="_IDGenCTCInput2" value="{context>PerMonth}" />
+                        <Input id="_IDGenCTCInput3" value="{context>PerAnnum}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+
+    </VBox>
+</core:FragmentDefinition>

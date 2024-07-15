@@ -1,0 +1,37 @@
+<core:FragmentDefinition id="Bonafide" 
+    xmlns="sap.m" 
+    xmlns:t="sap.ui.table" 
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form" 
+    xmlns:core="sap.ui.core">
+
+    <VBox id="_IDGenBonafideVBox1" fitContainer="true">
+
+        <f:SimpleForm id="_IDGenBonafideSimpleForm1" minWidth="1024" maxContainerCols="2" editable="false"
+            layout="ResponsiveGridLayout" labelSpanL="4" labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2"
+            columnsM="2">
+            <f:toolbar>
+                <OverflowToolbar id="_IDGenBonafideOverflowToolbar1">
+                    <Title id="_IDGenBonafideTitle1" text="Bonafide" />
+                    <ToolbarSpacer id="_IDGenBonafideToolbarSpacer1" />
+                    <Button id="_IDGenBonafideButton1" icon="sap-icon://pdf-attachment" tooltip="View Bonafide PDF"
+                        press="onBonafidePreview" />
+                </OverflowToolbar>
+            </f:toolbar>
+            <f:content>
+                <Label id="_IDGenBonafideLabel1" text="Request Purpose" />
+                <Input id="_IDGenBonafideInput1" value="{context>/RequestData/RequestPurpose}" editable="false" />
+                <Label id="_IDGenBonafideLabel2" text="Employee Comment" />
+                <Input id="_IDGenBonafideInput2" value="{context>/RequestData/Comment}" editable="false" />
+                <Label id="_IDGenBonafideLabel3" text="Content" />
+                <TextArea id="_IDGenBonafideTextArea3" value="{context>/RequestData/Content}" />
+                <core:Title id="_IDGenBonafideTitle3" text="" />
+            </f:content>
+            <f:layoutData>
+                <FlexItemData id="_IDGenBonafideFlexItemData1" shrinkFactor="0" backgroundDesign="Solid"
+                    styleClass="sapContrastPlus" />
+            </f:layoutData>
+        </f:SimpleForm>
+    
+    </VBox>
+</core:FragmentDefinition>

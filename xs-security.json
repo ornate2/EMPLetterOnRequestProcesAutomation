@@ -1,0 +1,32 @@
+{
+  "xsappname": "empletteronrequest",
+  "tenant-mode": "dedicated",
+  "description": "Security profile of called application",
+  "scopes": [
+    {
+      "name": "uaa.user",
+      "description": "UAA"
+    },
+    {
+      "name": "$XSAPPNAME.jobscheduler",
+      "description": "JobScheduler Scope",
+      "grant-as-authority-to-apps": [
+        "$XSSERVICENAME(JobSchedule)"
+      ]
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "Token_Exchange",
+      "description": "UAA",
+      "scope-references": [
+        "uaa.user"
+      ]
+    }
+  ],
+  "oauth2-configuration": {
+    "redirect-uris": [
+      "https://*.applicationstudio.cloud.sap/**"
+    ]
+  }
+}
